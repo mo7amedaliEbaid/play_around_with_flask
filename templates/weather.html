@@ -4,19 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} Weather</title>
-    <link href="{{ url_for('static', filename='styles/style.css')}}"
-    rel="stylesheet"/>
+    <link href="{{ url_for('static', filename='styles/style.css')}}" rel="stylesheet"/>
 </head>
 <body>
-    <h1>{{ title }} Weather</h1>
-
-    <p>{{ status }} and {{ temp }} &deg;</p>
-    <p>Feels like {{ feels_like }} &deg;</p>
-
-    <form action="/weather">
-        <input type="text" name="city" id="city" placeholder="Enter a City" />
-        <button type="submit">Submit</button>
-
-    </form>
+    <div class="container">
+        <div class="weather-main">
+            <div class="temp">{{ temp }}&deg;</div>
+            <div class="location">{{ title }}</div>
+            <div class="time">{{ current_time }}</div>
+            <div class="weather-icon"><img src="{{ icon_url }}" alt="weather icon"></div>
+        </div>
+        <div class="weather-details">
+            <div class="details-header">Weather Details...</div>
+            <div class="detail">Thunderstorm with Light Drizzle</div>
+            <div class="detail">Temp max: {{ temp_max }}&deg;</div>
+            <div class="detail">Temp min: {{ temp_min }}&deg;</div>
+            <div class="detail">Humidity: {{ humidity }}%</div>
+            <div class="detail">Cloudy: {{ cloudy }}%</div>
+            <div class="detail">Wind: {{ wind }} km/h</div>
+        </div>
+        <div class="forecast">
+            <div class="forecast-item">
+                <div>09:00</div>
+                <div>Snow</div>
+                <div>{{ forecast_temp }}&deg;</div>
+            </div>
+            <!-- Add more forecast items as needed -->
+        </div>
+        <form action="/weather" method="get">
+            <input type="text" name="city" id="city" placeholder="Enter a City" />
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
