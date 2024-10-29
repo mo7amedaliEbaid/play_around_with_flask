@@ -15,5 +15,5 @@ requests==2.32.3
 tomli==2.0.1
 urllib3==2.2.2
 waitress==3.0.1
-werkzeug==3.0.3
+werkzeug==3.0.6
 zipp==3.19.2
